@@ -4,7 +4,7 @@ class Hud {
   double x, y;
   double fontSize;
   PFont font;
-  int[] numsYButtonArr = new int[] {10, 9, 8, 7, 6, 5, 5, 1};
+  int[] numsYButtonArr = new int[] {10, 9, 8, 7, 6, 5, 5, 4, 1};
 
   // Create an ArrayList to hold buttons and define the constructor for the Hud class
   ArrayList<Button> buttons = new ArrayList<Button>();
@@ -21,7 +21,7 @@ class Hud {
     buttons.add(new Button("Huge", 0, height - (6 * y), 50, 20, 4)); // 4
     buttons.add(new Button("OMFG", 0, height - (5 * y), 50, 20, 5)); // 5
     buttons.add(new Button("Clear", 100, height - (5 * y), 50, 20, 6)); // 6
-    //buttons.add(new Button("Paths", 100, height - (4 * y), 50, 20, 8)); // 8
+    buttons.add(new Button("Paths", 100, height - (4 * y), 50, 20, 8)); // 8
     buttons.add(new Button("Generate proto disk (slow start)", 0, height - (1 * y), 150, 20, 7)); // 7
   }
 

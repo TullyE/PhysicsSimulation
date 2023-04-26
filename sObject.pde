@@ -50,8 +50,7 @@ class sObject {
   void show() {
     // Set the fill and stroke colors to c
     //c = color(255, 255 - Math.round(this.mass / 39216) * 2, 255 - Math.round(this.mass / 39216) * 2);
-    int[] myColor = getColor(this.mass);
-    c = color(myColor[0], myColor[1], myColor[2]);
+    c = getColor((int) this.mass);
     fill(c);
     stroke(c);
 
@@ -102,30 +101,25 @@ class sObject {
     //return ">>>sObject<<<\n\t" + "Mass: " + this.mass + "\n\t Velocity: " + this.velocity;
   }
 
-  public int[] getColor(double value) {
-    int[] myColor_ = new int[3];
-    double maxVal = 10000000.0;
-    double minVal = 1.0;
-
-    if (value < minVal) {
-      myColor_[0] = 255;
-      myColor_[1] = 255;
-      myColor_[2] = 255;
-    } else if (value < 1000000.0) {
-      double t = (value - minVal) / (1000000.0 - minVal);
-      myColor_[0] = (int) (255.0 * (1.0 - t));
-      myColor_[1] = (int) (127.0 * t);
-      myColor_[2] = 0;
-    } else if (value < maxVal) {
-      double t = (value - 1000000.0) / (maxVal - 1000000.0);
-      myColor_[0] = (int) (255.0 * t);
-      myColor_[1] = 127;
-      myColor_[2] = 0;
+  public color getColor(int value) {
+    // Define the RGB values for white and orange
+    int[] white = {255, 255, 255};  // RGB values for white
+    int[] orange = {255, 165, 0};   // RGB values for orange
+    int[] red = {255, 0, 0}; // RGB values for red
+    if (this.mass <= 1000000) {
+      double ratio = Math.log10(value) / Math.log10(1000000);  // Calculate the ratio using a logarithmic scale
+      int[] color_ = new int[3];
+      for (int i = 0; i < 3; i++) {
+        color_[i] = (int) (white[i] + (orange[i] - white[i]) * ratio * ratio);  // Interpolate the RGB values using the ratio squared
+      }
+      return color(color_[0], color_[1], color_[2]);
     } else {
-      myColor_[0] = 255;
-      myColor_[1] = 0;
-      myColor_[2] = 0;
+      double ratio = Math.log10(value - 1000000) / Math.log10(9000000);  // Calculate the ratio using a logarithmic scale
+      int[] color_ = new int[3];
+      for (int i = 0; i < 3; i++) {
+        color_[i] = (int) (orange[i] + (red[i] - orange[i]) * ratio * ratio);  // Interpolate the RGB values using the ratio squared
+      }
+      return color(color_[0], color_[1], color_[2]);
     }
-    return myColor_;
   }
 }

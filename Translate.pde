@@ -58,9 +58,9 @@ class Translate {
 
   // method to set the start position of the mouse and translation when moving starts
   void startMoving() {
-    showTrails = false; // not sure what this does
-    for(sObject o : particles) { // not sure what this does
-      o.history.clear(); // not sure what this does
+    showTrails = false; //stop showing the trails
+    for(sObject o : particles) { //for every particle
+      o.history.clear(); //clear the history 
     }
     mouseStart.setVector(mouseX, mouseY);
     translationStart.setVector(t.translation.getX(), t.translation.getY());

@@ -95,6 +95,11 @@ class Button {
       println("7");  //generate a protodis
     } else if (bID == 8) {
       showTrails = !showTrails;
+      if (showTrails == false) {
+        for (sObject o : particles) { //for every particle
+          o.history.clear(); //clear the history
+        }
+      }
     }
   }
 }
