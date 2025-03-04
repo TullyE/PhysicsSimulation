@@ -49,8 +49,8 @@ function draw() {
   trailLine.update(t);
   trailLine.show();
   t.update();
+  calculateForces();
   for(let i = 0; i < particles.length; i++) {
-    calculateForces();
     particles[i].show();
     particles[i].move(show_trails);
     particles[i].running_vector.setVector(0, 0);
