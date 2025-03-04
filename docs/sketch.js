@@ -49,13 +49,14 @@ function draw() {
   trailLine.update(t);
   trailLine.show();
   t.update();
+  groupAsteroids();
   calculateForces();
   for(let i = 0; i < particles.length; i++) {
     particles[i].show();
     particles[i].move(show_trails);
     particles[i].running_vector.setVector(0, 0);  
   }
-  groupAsteroids();
+  
   pop();
   hud.update(particles.length);
   curr_mass = hud.get_selected_mass();
