@@ -53,10 +53,9 @@ function draw() {
   for(let i = 0; i < particles.length; i++) {
     particles[i].show();
     particles[i].move(show_trails);
-    particles[i].running_vector.setVector(0, 0);
-    groupAsteroids();
-    
+    particles[i].running_vector.setVector(0, 0);  
   }
+  groupAsteroids();
   pop();
   hud.update(particles.length);
   curr_mass = hud.get_selected_mass();
